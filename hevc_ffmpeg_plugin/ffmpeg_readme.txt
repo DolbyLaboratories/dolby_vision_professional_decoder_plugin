@@ -1,10 +1,8 @@
 Building the sample FFmpeg decoder plug-in
 
-Before you build the plug-in, download these files from the Dolby GitHub repository at https://github.com/DolbyLaboratories/dolbyvision_professional_decoder
-
-	• dvpd_hevc_dec_plugin.h	
-	• FFmpeg_hevc_dec_plugin.c
-	• CMakeLists.txt
+Before you build the plug-in, check out the Dolby GitHub repository at https://github.com/
+DolbyLaboratories/dolby_vision_professional_decoder_plugin. The FFmpeg files you need are contained in
+the hevc_ffmpeg_plugin directory.
 
 1.1 Building the plug-in on Microsoft Windows
 These steps describe how to build a decoder plug-in on Microsoft Windows.
