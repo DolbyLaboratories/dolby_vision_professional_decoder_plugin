@@ -15,6 +15,7 @@ Procedure
 	2. For every C header and library file in the FFmpeg package, copy files from FFmpeg to this directory as shown:
 		• ffmpeg\lib\avcodec.lib
 		• ffmpeg\lib\avutil.lib
+        • ffmpeg\lib\avformat.lib
 		• ffmpeg\include\libavcodec	
 		• ffmpeg\include\libavformat
 		• ffmpeg\include\libavutil
