@@ -11,14 +11,14 @@ Prerequisites
 Before you begin building the sample FFmpeg decoder, download the FFmpeg source files and build the binaries.
 
 Procedure
-	1. Create a new directory .\examples\hevcDecPlugin\ffmpeg.
+	1. inside the 'dolbyvision_professional_decoder\hevc_ffmpeg_plugin' folder create a new directory .\ffmpeg 
 	2. For every C header and library file in the FFmpeg package, copy files from FFmpeg to this directory as shown:
 		• ffmpeg\lib\avcodec.lib
 		• ffmpeg\lib\avutil.lib
 		• ffmpeg\include\libavcodec	
 		• ffmpeg\include\libavformat
 		• ffmpeg\include\libavutil
-	3. In the .\examples\hevcDecPlugin\ffmpeg directory, create a build directory.
+	3. In the 'dolbyvision_professional_decoder\hevc_ffmpeg_plugin', create a 'build' directory.
 	4. Change to the build directory and open a command-line window.
 	5. Use CMake to build the files. Specify the platform and toolchain. This example uses a Microsoft Visual Studio toolchain and x64 architecture.
 
