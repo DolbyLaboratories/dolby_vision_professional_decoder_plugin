@@ -9,6 +9,7 @@ These steps describe how to build a decoder plug-in on Microsoft Windows.
 
 Prerequisites
 Before you begin building the sample FFmpeg decoder, download the FFmpeg source files and build the binaries.
+CMake version 3.x is required for the following building steps.
 
 Procedure
 	1. inside the 'dolbyvision_professional_decoder\hevc_ffmpeg_plugin' folder create a new directory .\ffmpeg 
@@ -44,13 +45,13 @@ Procedure
 		• ffmpeg\include\libavcodec
 		• ffmpeg\include\libavformat
 		• ffmpeg\include\libavutil
-	3. In the ./examples/hevcDecPlugin/ffmpeg directory, create a build directory.
+	3. In the ./dolby_vision_professional_decoder_plugin-master/hevc_ffmpeg_plugin directory, create a build directory.
 	4. Change to the build directory and open a command-line window.
 	5. Use CMake to build the files. Specify the build type.
 		• cmake .. -DCMAKE_BUILD_TYPE=Debug
 		• cmake .. -DCMAKE_BUILD_TYPE=Release
 	6. Then build the sample plug-in files.
 
-		cmake --build.
+		cmake --build .
 		
 	The FFmpegDecPlugin.so file is created.
