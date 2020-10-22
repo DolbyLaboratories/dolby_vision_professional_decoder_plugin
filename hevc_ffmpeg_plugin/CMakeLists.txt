@@ -31,7 +31,7 @@
 #
 
 cmake_minimum_required(VERSION 3.5)
-project(FFmpegHevcDecPlugin)
+project(FFmpegVideoDecPlugin)
 
 set(CMAKE_C_STANDARD 99)
 
@@ -69,17 +69,26 @@ if(NOT AVFORMAT_FOUND OR NOT AVCODEC_FOUND OR NOT AVUTIL_FOUND)
 		SET(AVCODEC_LIBRARIES avcodec.lib)
 		SET(AVUTIL_LIBRARIES avutil.lib)
 
-		MESSAGE("Found FFmpeg libraries in 'ffmpeg' directory.")
+		MESSAGE("Found FFmpeg libraries in ${PROJECT_SOURCE_DIR}/ffmpeg directory.")
 	else()
-		MESSAGE("Did not find all FFmpeg libraries and header files in 'ffmpeg' directory.")
+		MESSAGE("Did not find all FFmpeg libraries and header files in ${PROJECT_SOURCE_DIR}/ffmpeg directory.")
 	endif()
 endif()
 
+set (HEVC_PLUGIN_NAME "FFmpegHevcPlugin")
+set (AVC_PLUGIN_NAME "FFmpegAvcPlugin")
+
 if(AVFORMAT_FOUND AND AVCODEC_FOUND AND AVUTIL_FOUND)
 	link_directories(${AVFORMAT_LIBRARY_DIRS} ${AVCODEC_LIBRARY_DIRS} ${AVUTIL_LIBRARY_DIRS})
-	add_library(FFmpegDecPlugin SHARED ffmpeg_hevc_dec_plugin.c)
-	target_include_directories(FFmpegDecPlugin PRIVATE ${AVFORMAT_INCLUDE_DIRS} ${AVCODEC_INCLUDE_DIRS} ${AVUTIL_INCLUDE_DIRS})
-	target_link_libraries(FFmpegDecPlugin PRIVATE ${AVFORMAT_LIBRARIES} ${AVCODEC_LIBRARIES} ${AVUTIL_LIBRARIES})
+	
+	add_library(${HEVC_PLUGIN_NAME} SHARED ffmpeg_vid_dec_plugin.c)
+	target_include_directories(${HEVC_PLUGIN_NAME} PRIVATE ${AVFORMAT_INCLUDE_DIRS} ${AVCODEC_INCLUDE_DIRS} ${AVUTIL_INCLUDE_DIRS})
+	target_link_libraries(${HEVC_PLUGIN_NAME} PRIVATE ${AVFORMAT_LIBRARIES} ${AVCODEC_LIBRARIES} ${AVUTIL_LIBRARIES})
+
+	add_library(${AVC_PLUGIN_NAME} SHARED ffmpeg_vid_dec_plugin.c)
+	target_compile_definitions(${AVC_PLUGIN_NAME} PRIVATE AVC_CODEC)
+	target_include_directories(${AVC_PLUGIN_NAME} PRIVATE ${AVFORMAT_INCLUDE_DIRS} ${AVCODEC_INCLUDE_DIRS} ${AVUTIL_INCLUDE_DIRS})
+	target_link_libraries(${AVC_PLUGIN_NAME} PRIVATE ${AVFORMAT_LIBRARIES} ${AVCODEC_LIBRARIES} ${AVUTIL_LIBRARIES})
 else()
 	MESSAGE(FATAL_ERROR "Could not create build files for ffmpeg HEVC decoder plug-in.")
 endif()
