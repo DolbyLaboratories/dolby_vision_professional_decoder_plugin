@@ -41,13 +41,7 @@ Two video decoder plugin shared library files are created.
 These steps describe how to build a decoder plug-in on Linux.
 
 Procedure
-	1. Import the required headers and libraries using the pkg-config tool.
-	2. Install the specific ffmpeg-devel packages using your distribution package manager as shown:
-		• ffmpeg\lib\avcodec.lib
-		• ffmpeg\lib\avutil.lib
-		• ffmpeg\include\libavcodec
-		• ffmpeg\include\libavformat
-		• ffmpeg\include\libavutil
+	1. Install libavformat-dev development libraries on your system by using your favourite package manager (e.g. on Ubuntu 16.04 LTS: 'sudo apt install libavformat-dev')
 	3. In the ./dolby_vision_professional_decoder_plugin-master/videodecoder_ffmpeg_plugin directory, create a build directory.
 	4. Change to the build directory and open a command-line window.
 	5. Use CMake to build the files. Specify the build type.
